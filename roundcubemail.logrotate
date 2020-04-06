@@ -1,0 +1,7 @@
+/usr/share/roundcubemail/logs/*.log {
+    missingok
+    su root apache
+    notifempty
+    size 30k
+    nocreate
+}
