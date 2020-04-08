@@ -1,6 +1,6 @@
 Name:           roundcubemail
 Version:        1.4.3
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Simple, modern & fast web-based email client.
 License:        AGPLv3+
 Group:          Networking/WWW
@@ -8,6 +8,7 @@ URL:            https://roundcube.net/
 Source0:        https://github.com/roundcube/roundcubemail/releases/download/%{version}/%{name}-%{version}-complete.tar.gz 
 Source1: roundcubemail.httpd
 Source2: roundcubemail.logrotate
+Source3: roundcubemail.template-custom-70USER_PREFERENCES
 Requires:       httpd
 Requires:	    php
 Requires: php-curl
@@ -76,6 +77,12 @@ cp -pr %SOURCE2 %{buildroot}%{_sysconfdir}/logrotate.d/roundcubemail
 # GPG keys
 mkdir -p %{buildroot}/usr/share/roundcubemail/enigma
 
+# custom-template
+mkdir -p %{buildroot}%{_sysconfdir}/e-smith/templates-custom/etc/roundcubemail/config.inc.php
+cp -pr %SOURCE3 %{buildroot}%{_sysconfdir}/e-smith/templates-custom/etc/roundcubemail/config.inc.php/70USER_PREFERENCES
+
+
+
 %files
 %{_datadir}/%{name}
 %config(noreplace) %{_sysconfdir}/httpd/conf.d/%{name}.conf
@@ -83,11 +90,10 @@ mkdir -p %{buildroot}/usr/share/roundcubemail/enigma
 %dir %attr(0750,apache,apache) %{_datadir}/%{name}/temp
 %dir %attr(0750,apache,apache) %{_datadir}/%{name}/enigma
 %dir %attr(0750,apache,apache) %{_datadir}/%{name}/logs
-
+%{_sysconfdir}/e-smith/templates-custom/etc/roundcubemail/config.inc.php/70USER_PREFERENCES
 %post
 %postun
 
 %changelog
 * Mon Apr 06 2020 stephane de labrusse <stephdl@de-labrusse.fr> 1.4.3-el7
 - first release
-
