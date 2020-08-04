@@ -1,5 +1,5 @@
 Name:           roundcubemail
-Version:        1.4.4
+Version:        1.4.7
 Release:        1%{?dist}
 Summary:        Simple, modern & fast web-based email client.
 License:        AGPLv3+
@@ -95,6 +95,9 @@ cp -pr %SOURCE3 %{buildroot}%{_sysconfdir}/e-smith/templates-custom/etc/roundcub
 %postun
 
 %changelog
+  * Tue Aug 04 2020 stephane de Labrusse <stephdl@de-labrusse.fr> 1.4.7
+  - Upstream upgrade
+
 * Wed Apr 29 2020 stephane de Labrusse <stephdl@de-labrusse.fr> 1.4.4
 - Upstream upgrade
 
