@@ -1,5 +1,5 @@
 Name:           roundcubemail
-Version:        1.4.7
+Version:        1.4.8
 Release:        1%{?dist}
 Summary:        Simple, modern & fast web-based email client.
 License:        AGPLv3+
@@ -9,6 +9,7 @@ Source0:        https://github.com/roundcube/roundcubemail/releases/download/%{v
 Source1: roundcubemail.httpd
 Source2: roundcubemail.logrotate
 Source3: roundcubemail.template-custom-70USER_PREFERENCES
+Source4: https://github.com/alexandregz/twofactor_gauthenticator/archive/master.zip
 Requires:       httpd
 Requires:	    php
 Requires: php-curl
@@ -55,6 +56,8 @@ tar xzvf %{SOURCE0}
 
 %install
 
+
+
 # Temp directory
 mkdir -p %{buildroot}/usr/share/%{name}/temp
 
@@ -81,7 +84,10 @@ mkdir -p %{buildroot}/usr/share/roundcubemail/enigma
 mkdir -p %{buildroot}%{_sysconfdir}/e-smith/templates-custom/etc/roundcubemail/config.inc.php
 cp -pr %SOURCE3 %{buildroot}%{_sysconfdir}/e-smith/templates-custom/etc/roundcubemail/config.inc.php/70USER_PREFERENCES
 
-
+# Plugins directory 2FA
+mkdir -p %{buildroot}/usr/share/%{name}/plugins/twofactor_gauthenticator/
+unzip %{SOURCE4}
+cp -a twofactor_gauthenticator-master/* %{buildroot}/usr/share/%{name}/plugins/twofactor_gauthenticator/
 
 %files
 %{_datadir}/%{name}
@@ -90,13 +96,22 @@ cp -pr %SOURCE3 %{buildroot}%{_sysconfdir}/e-smith/templates-custom/etc/roundcub
 %dir %attr(0750,apache,apache) %{_datadir}/%{name}/temp
 %dir %attr(0750,apache,apache) %{_datadir}/%{name}/enigma
 %dir %attr(0750,apache,apache) %{_datadir}/%{name}/logs
+%dir %attr(0755,root,root) %{_datadir}/%{name}/plugins/twofactor_gauthenticator
 %{_sysconfdir}/e-smith/templates-custom/etc/roundcubemail/config.inc.php/70USER_PREFERENCES
+
 %post
+
 %postun
 
+%clean
+
 %changelog
-  * Tue Aug 04 2020 stephane de Labrusse <stephdl@de-labrusse.fr> 1.4.7
-  - Upstream upgrade
+* Tue Aug 18 2020 stephane de Labrusse <stephdl@de-labrusse.fr> 1.4.8
+- Upstream upgrade
+- 2FA bundled : https://github.com/alexandregz/twofactor_gauthenticator
+
+* Tue Aug 04 2020 stephane de Labrusse <stephdl@de-labrusse.fr> 1.4.7
+- Upstream upgrade
 
 * Wed Apr 29 2020 stephane de Labrusse <stephdl@de-labrusse.fr> 1.4.4
 - Upstream upgrade
