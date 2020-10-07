@@ -56,6 +56,8 @@ tar xzvf %{SOURCE0}
 
 %install
 
+# create /etc/roundcubemail for first installation
+mkdir -p %{buildroot}/etc/%{name}
 
 
 # Temp directory
@@ -97,6 +99,7 @@ cp -a twofactor_gauthenticator-master/* %{buildroot}/usr/share/%{name}/plugins/t
 %dir %attr(0750,apache,apache) %{_datadir}/%{name}/enigma
 %dir %attr(0750,apache,apache) %{_datadir}/%{name}/logs
 %dir %attr(0755,root,root) %{_datadir}/%{name}/plugins/twofactor_gauthenticator
+%dir %attr(0755,root,root) /etc/%{name}
 %{_sysconfdir}/e-smith/templates-custom/etc/roundcubemail/config.inc.php/70USER_PREFERENCES
 
 %post
