@@ -1,5 +1,5 @@
 Name:           roundcubemail
-Version:        1.4.8
+Version:        1.4.9
 Release:        1%{?dist}
 Summary:        Simple, modern & fast web-based email client.
 License:        AGPLv3+
@@ -106,6 +106,9 @@ cp -a twofactor_gauthenticator-master/* %{buildroot}/usr/share/%{name}/plugins/t
 %clean
 
 %changelog
+* Wed Oct 7 2020 stephane de Labrusse <stephdl@de-labrusse.fr> 1.4.9
+- Upstream upgrade
+
 * Tue Aug 18 2020 stephane de Labrusse <stephdl@de-labrusse.fr> 1.4.8
 - Upstream upgrade
 - 2FA bundled : https://github.com/alexandregz/twofactor_gauthenticator
