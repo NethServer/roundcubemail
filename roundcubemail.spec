@@ -1,5 +1,5 @@
 Name:           roundcubemail
-Version:        1.4.9
+Version:        1.4.10
 Release:        1%{?dist}
 Summary:        Simple, modern & fast web-based email client.
 License:        AGPLv3+
