@@ -1,5 +1,5 @@
 Name:           roundcubemail
-Version:        1.4.10
+Version:        1.4.11
 Release:        1%{?dist}
 Summary:        Simple, modern & fast web-based email client.
 License:        AGPLv3+
@@ -109,6 +109,9 @@ cp -a twofactor_gauthenticator-master/* %{buildroot}/usr/share/%{name}/plugins/t
 %clean
 
 %changelog
+* Sun Apr 25 2021 stephane de Labrusse <stephdl@de-labrusse.fr> 1.4.11
+- Upstream upgrade to 1.4.11
+
 * Wed Oct 7 2020 stephane de Labrusse <stephdl@de-labrusse.fr> 1.4.9
 - Upstream upgrade
 
