@@ -8,8 +8,7 @@ URL:            https://roundcube.net/
 Source0:        https://github.com/roundcube/roundcubemail/releases/download/%{version}/%{name}-%{version}-complete.tar.gz 
 Source1: roundcubemail.httpd
 Source2: roundcubemail.logrotate
-Source3: roundcubemail.template-custom-70USER_PREFERENCES
-Source4: https://github.com/alexandregz/twofactor_gauthenticator/archive/master.zip
+Source3: https://github.com/alexandregz/twofactor_gauthenticator/archive/master.zip
 Requires:       httpd
 Requires:	    php
 Requires: php-curl
@@ -82,13 +81,9 @@ cp -pr %SOURCE2 %{buildroot}%{_sysconfdir}/logrotate.d/roundcubemail
 # GPG keys
 mkdir -p %{buildroot}/usr/share/roundcubemail/enigma
 
-# custom-template
-mkdir -p %{buildroot}%{_sysconfdir}/e-smith/templates-custom/etc/roundcubemail/config.inc.php
-cp -pr %SOURCE3 %{buildroot}%{_sysconfdir}/e-smith/templates-custom/etc/roundcubemail/config.inc.php/70USER_PREFERENCES
-
 # Plugins directory 2FA
 mkdir -p %{buildroot}/usr/share/%{name}/plugins/twofactor_gauthenticator/
-unzip %{SOURCE4}
+unzip %{SOURCE3}
 cp -a twofactor_gauthenticator-master/* %{buildroot}/usr/share/%{name}/plugins/twofactor_gauthenticator/
 
 %files
@@ -100,7 +95,6 @@ cp -a twofactor_gauthenticator-master/* %{buildroot}/usr/share/%{name}/plugins/t
 %dir %attr(0750,apache,apache) %{_datadir}/%{name}/logs
 %dir %attr(0755,root,root) %{_datadir}/%{name}/plugins/twofactor_gauthenticator
 %dir %attr(0755,root,root) /etc/%{name}
-%{_sysconfdir}/e-smith/templates-custom/etc/roundcubemail/config.inc.php/70USER_PREFERENCES
 
 %post
 
