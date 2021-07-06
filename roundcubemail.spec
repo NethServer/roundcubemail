@@ -1,11 +1,12 @@
+%define rcm_version 1.4.11
 Name:           roundcubemail
-Version:        1.4.11
-Release:        1%{?dist}
+Version: 1.4.11.1
+Release: 1%{?dist}
 Summary:        Simple, modern & fast web-based email client.
 License:        AGPLv3+
 Group:          Networking/WWW
 URL:            https://roundcube.net/
-Source0:        https://github.com/roundcube/roundcubemail/releases/download/%{version}/%{name}-%{version}-complete.tar.gz 
+Source0:        https://github.com/roundcube/roundcubemail/releases/download/%{rcm_version}/%{name}-%{rcm_version}-complete.tar.gz
 Source1: roundcubemail.httpd
 Source2: roundcubemail.logrotate
 Source3: https://github.com/alexandregz/twofactor_gauthenticator/archive/master.zip
@@ -46,8 +47,8 @@ work. The user interface is fully skinnable using XHTML and
 CSS 2.
 
 %prep
-mkdir %{name}-%{version}
-cd %{name}-%{version}
+mkdir %{name}-%{rcm_version}
+cd %{name}-%{rcm_version}
 tar xzvf %{SOURCE0}
 
 %build
@@ -66,7 +67,7 @@ mkdir -p %{buildroot}/usr/share/%{name}/temp
 mkdir -p %{buildroot}/usr/share/%{name}/logs
 
 install -d -m 755 %{buildroot}%{_datadir}/%{name}
-cp -r %{name}-%{version}/%{name}-%{version}/* %{buildroot}%{_datadir}/%{name}
+cp -r %{name}-%{rcm_version}/%{name}-%{rcm_version}/* %{buildroot}%{_datadir}/%{name}
 
 # Link to config file
 ln -s /etc/roundcubemail/config.inc.php     %{buildroot}%{_datadir}/%{name}/config/config.inc.php
@@ -103,6 +104,9 @@ cp -a twofactor_gauthenticator-master/* %{buildroot}/usr/share/%{name}/plugins/t
 %clean
 
 %changelog
+* Tue Jul 06 2021 Giacomo Sanchietti <giacomo.sanchietti@nethesis.it> - 1.4.11.1-1
+- Roundcubemail 1.4.11 - NethServer/dev#6541
+
 * Sun Apr 25 2021 stephane de Labrusse <stephdl@de-labrusse.fr> 1.4.11
 - Upstream upgrade to 1.4.11
 
