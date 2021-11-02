@@ -64,7 +64,7 @@ mkdir -p %{buildroot}/etc/%{name}
 mkdir -p %{buildroot}/usr/share/%{name}/temp
 
 # Logs
-mkdir -p %{buildroot}/usr/share/%{name}/logs
+mkdir -p %{buildroot}/var/log/%{name}
 
 install -d -m 755 %{buildroot}%{_datadir}/%{name}
 cp -r %{name}-%{rcm_version}/%{name}-%{rcm_version}/* %{buildroot}%{_datadir}/%{name}
@@ -93,7 +93,7 @@ cp -a twofactor_gauthenticator-master/* %{buildroot}/usr/share/%{name}/plugins/t
 %config(noreplace) %{_sysconfdir}/logrotate.d/roundcubemail
 %dir %attr(0750,apache,apache) %{_datadir}/%{name}/temp
 %dir %attr(0750,apache,apache) %{_datadir}/%{name}/enigma
-%dir %attr(0750,apache,apache) %{_datadir}/%{name}/logs
+%dir %attr(0750,apache,apache) /var/log/%{name}
 %dir %attr(0755,root,root) %{_datadir}/%{name}/plugins/twofactor_gauthenticator
 %dir %attr(0755,root,root) /etc/%{name}
 
