@@ -1,6 +1,6 @@
 %define rcm_version 1.4.11
 Name:           roundcubemail
-Version: 1.4.11.1
+Version: 1.4.11.2
 Release: 1%{?dist}
 Summary:        Simple, modern & fast web-based email client.
 License:        AGPLv3+
@@ -104,6 +104,9 @@ cp -a twofactor_gauthenticator-master/* %{buildroot}/usr/share/%{name}/plugins/t
 %clean
 
 %changelog
+* Wed Nov 03 2021 Giacomo Sanchietti <giacomo.sanchietti@nethesis.it> - 1.4.11.2-1
+- Roundcubemail: Log folder not created - NethServer/dev#6591
+
 * Tue Jul 06 2021 Giacomo Sanchietti <giacomo.sanchietti@nethesis.it> - 1.4.11.1-1
 - Roundcubemail 1.4.11 - NethServer/dev#6541
 
