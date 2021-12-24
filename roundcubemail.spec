@@ -1,4 +1,4 @@
-%define rcm_version 1.4.11
+%define rcm_version 1.5.1
 Name:           roundcubemail
 Version: 1.4.11.2
 Release: 1%{?dist}
