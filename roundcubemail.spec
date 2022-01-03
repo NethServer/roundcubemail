@@ -11,28 +11,7 @@ Source1: roundcubemail.httpd
 Source2: roundcubemail.logrotate
 Source3: https://github.com/alexandregz/twofactor_gauthenticator/archive/master.zip
 Requires:       httpd
-Requires:	    php
-Requires: php-curl
-Requires: php-date
-Requires: php-dom
-Requires: php-fileinfo
-Requires: php-filter
-Requires: php-gd
-Requires: php-hash
-Requires: php-iconv
-Requires: php-intl
-Requires: php-json
-Requires: php-ldap
-Requires: php-mbstring
-Requires: php-openssl
-Requires: php-pcre
-Requires: php-pdo
-Requires: php-pspell
-Requires: php-session
-Requires: php-simplexml
-Requires: php-sockets
-Requires: php-spl
-Requires: php-xml
+
 
 BuildArch:      noarch
 
