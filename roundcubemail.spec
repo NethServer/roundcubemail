@@ -1,6 +1,6 @@
 %define rcm_version 1.4.15
 Name:           roundcubemail
-Version: 1.4.13
+Version: 1.4.14
 Release: 1%{?dist}
 Summary:        Simple, modern & fast web-based email client.
 License:        AGPLv3+
@@ -104,6 +104,10 @@ cp -a twofactor_gauthenticator-master/* %{buildroot}/usr/share/%{name}/plugins/t
 %clean
 
 %changelog
+* Tue Oct 31 2023 Stephane de Labrusse <stephdl@de-labrusse.fr> - 1.4.14-1
+- Update roundcubemail to 1.4.15 for security fix - Bug NethServer/dev#6768
+- Security update 1.5.5 released for roundcubemail - Bug NethServer/dev#6767
+
 * Tue Jan 11 2022 Giacomo Sanchietti <giacomo.sanchietti@nethesis.it> - 1.4.13-1
 - Roundcubemail: Update to 1.4.13 - NethServer/dev#6618
 
